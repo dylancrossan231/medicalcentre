@@ -12,7 +12,7 @@
 
                     </div>
                     <div class="card-body">
-                    @if (count($visit)===0)
+                    @if (count($visits)===0)
                     <p> there are no visits! </p>
                     @else
                     <table id="table-visits" class="table table-hover">
@@ -28,7 +28,7 @@
                     </thead>
 
                     <tbody>
-                        @foreach ($visit ?? '' as $visit)
+                        @foreach ($visits as $visit)
                             <tr data-id="{{ $visit->id }}">
                                 <td>{{$visit->cost}}</td>
                                 <td>{{$visit->duration}}</td>

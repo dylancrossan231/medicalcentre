@@ -9,6 +9,7 @@ use App\User;
 use App\Visit;
 use App\Doctor;
 use App\Patient;
+use Auth;
 class VisitController extends Controller
 {
     /**
@@ -22,7 +23,7 @@ class VisitController extends Controller
          $doctors = Doctor::all();
          $visits = Visit::all();
          return view('visit.index')->with([
-            'visit' => $visits,
+            'visits' => $visits,
             'patients' => $patients,
             'doctors' => $doctors
             
@@ -59,7 +60,7 @@ class VisitController extends Controller
             'patient_id' => 'required|integer'
         ]);
 
-
+        
         $visit = new Visit();
         $visit->cost = $request->input('cost');
         $visit->duration = $request->input('duration');
@@ -67,11 +68,10 @@ class VisitController extends Controller
         $visit->patient_id = $request->input('patient_id');
         $visit->save();
 
-
+        $visits = Visit::all();
 
         return view('visit.index')->with([
-            'visit', $visit
-            
+            'visits' => $visits
         ]);
 
 
@@ -104,11 +104,13 @@ class VisitController extends Controller
         $visits = Visit::findOrFail($id);
         $patients = Patient::all();
         $doctors = Doctor::all();
+        $user = User::findOrFail(Auth::id());
 
         return view('visit.edit')->with([
             'patients' => $patients,
             'doctors' => $doctors,
-            'visit' => $visits
+            'visit' => $visits,
+            'user' => $user
         ]);
     }
 
@@ -137,9 +139,7 @@ class VisitController extends Controller
         $visit->patient_id = $request->input('patient_id');
         $visit->save();
 
-        return view('visit.show')->with([
-            'visit', $visit
-        ]);
+        return redirect()->route('doctorvisit.index');    
     }
 
     /**

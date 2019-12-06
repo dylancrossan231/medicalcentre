@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-header">
                     Patients
-                    <a href="{{ route('doctorpatient.create') }}" class="btn btn-primary float-right">Add</a>
+                    <a href="{{ route('patient.create') }}" class="btn btn-primary float-right">Add</a>
 
                     </div>
                     <div class="card-body">
@@ -41,9 +41,9 @@
                                 <td>{{$patient->policy_number}}</td>
 
                                 <td>
-                                <a href="{{route('doctorpatient.show', $patient->id)}}" class="btn btn-primary"> View</a>
-                                <a href="{{route('doctorpatient.edit', $patient->user->id)}}" class="btn btn-warning"> Edit</a>
-                                <form style="display:inline-block" method="POST" action="{{route('doctorpatient.destroy', $patient->id)}}">
+                                <a href="{{route('patient.show', $patient->id)}}" class="btn btn-primary"> View</a>
+                                <a href="{{route('patient.edit', $patient->user->id)}}" class="btn btn-warning"> Edit</a>
+                                <form style="display:inline-block" method="POST" action="{{route('patient.destroy', $patient->id)}}">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{csrf_token() }}">
                                         <button type="submit" class="form-control btn btn-danger">Delete</a>

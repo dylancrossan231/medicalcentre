@@ -1,14 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Doctor;
-use App\Doctor;
-use App\User;
-use App\Role;
-use Auth;
+namespace App\Http\Controllers\Patient;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Auth;
+use App\Role;
+use App\User;
+use App\Visit;
+use App\Doctor;
+use App\Patient;
+use Illuminate\Support\Facades\Hash;
 
-class HomeController extends Controller
+class PatientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,15 +21,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         $user = User::findOrFail(Auth::id());
-        $doctor = Doctor::findOrFail($user->doctor->id);
+        $patient = Patient::findOrFail($user->patient->id);
         
         
     
-        return view('doctoruser.home')->with([
+        return view('patientuser.profile')->with([
             'user' => $user,
-            'doctor' => $doctor
+            'patient' => $patient
         ]);        
     }
 
@@ -36,7 +39,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+//
     }
 
     /**
@@ -47,7 +50,9 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
+
         //
+
     }
 
     /**
@@ -56,12 +61,10 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-       public function show($id)
-       {
+    public function show($id)
+    {
 //
-       }
-    
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -71,7 +74,7 @@ class HomeController extends Controller
      */
     public function edit($id)
     {
-        //
+//
     }
 
     /**
@@ -83,7 +86,7 @@ class HomeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+//
     }
 
     /**
@@ -94,6 +97,6 @@ class HomeController extends Controller
      */
     public function destroy($id)
     {
-        //
+//
     }
 }

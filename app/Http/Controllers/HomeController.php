@@ -39,7 +39,7 @@ class HomeController extends Controller
         else if($user->hasRole('doctor')){
           $home = 'doctoruser.home';
         }
-        else $home = 'patient.user.home';
+        else $home = 'patientuser.profile';
         
 
         return redirect()->route($home);

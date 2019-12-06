@@ -8,6 +8,7 @@ use App\Role;
 use App\User;
 use App\Visit;
 use App\Doctor;
+use Auth;
 use App\Patient;
 class VisitController extends Controller
 {
@@ -21,8 +22,8 @@ class VisitController extends Controller
          $patients = Patient::all();
          $doctors = Doctor::all();
          $visits = Visit::all();
-         return view('visit.index')->with([
-            'visit' => $visits,
+         return view('doctorvisit.index')->with([
+            'visits' => $visits,
             'patients' => $patients,
             'doctors' => $doctors
             
@@ -38,7 +39,7 @@ class VisitController extends Controller
     {
         $doctors= Doctor::all();
         $patients= Patient::all();
-        return view('visit.create')->with([
+        return view('doctorvisit.create')->with([
             'doctors' => $doctors,
             'patients' => $patients
         ]);
@@ -66,13 +67,11 @@ class VisitController extends Controller
         $visit->doctor_id = $request->input('doctor_id');
         $visit->patient_id = $request->input('patient_id');
         $visit->save();
+        $visits = Visit::all();
 
 
+        return redirect()->route('doctorvisit.index');    
 
-        return view('visit.index')->with([
-            'visit', $visit
-            
-        ]);
 
 
 
@@ -88,7 +87,7 @@ class VisitController extends Controller
     {
         $visit = Visit::findOrFail($id);
 
-        return view ('visit.show')->with([
+        return view ('doctorvisit.show')->with([
             'visit' => $visit
         ]);
     }
@@ -101,14 +100,16 @@ class VisitController extends Controller
      */
     public function edit($id)
     {
-        $visits = Visit::findOrFail($id);
+        $visit = Visit::findOrFail($id);
         $patients = Patient::all();
         $doctors = Doctor::all();
+        $user = User::findOrFail(Auth::id());
 
-        return view('visit.edit')->with([
+        return view('doctorvisit.edit')->with([
             'patients' => $patients,
             'doctors' => $doctors,
-            'visit' => $visits
+            'visit' => $visit,
+            'user' => $user
         ]);
     }
 
@@ -137,11 +138,11 @@ class VisitController extends Controller
         $visit->patient_id = $request->input('patient_id');
         $visit->save();
 
-        return view('visit.show')->with([
-            'visit', $visit
-        ]);
-    }
-
+        
+        return redirect()->route('doctorvisit.index');    
+        
+    
+        }
     /**
      * Remove the specified resource from storage.
      *
@@ -152,6 +153,6 @@ class VisitController extends Controller
     {
         $visit = Visit::findOrFail($id);
         $visit->delete();
-        return redirect()->route('visit.index');
+        return redirect()->route('doctorvisit.index');
     }
 }

@@ -7,16 +7,16 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                    Patient: {{ $user->first_name }} {{ $user->last_name }} @if(Auth::user()->id == $user->id) (You) @endif
+                    Patient: {{ $user->first_name }} {{ $user->last_name }}
                     
                     </div>
                     <div class="card-body">
 
                     <table id="table-books" >
                             <td>First Name:  </td>
-                            <tr>
+                            
                             <td>{{$patient->user->first_name}}</td>
-                            </tr>
+                            
                             <tr>
                             <td>Last Name:  </td>
                             <td>{{$patient->user->last_name}}</td>
@@ -38,19 +38,12 @@
                             <td>{{$patient->user->email}}</td>
                             </tr>
                             <tr>
-                            <td>Title:  </td>
-                            <td>{{$patient->expertise}}</td>
-                            </tr>
-                            <td>Date Started</td>
-                            <td>{{$patient->date_started}}
+
                         </tr>
 
                      </tbody>
                     </table>
-                                    <a href="{{route('doctorpatient.index')}}" class="btn btn-primary"> Back</a>
-                                    <a href="{{route('doctorvisit.index')}}" class="btn btn-primary"> Back to Visits</a>
-
-
+                         
                       
                  </div>
              </div>

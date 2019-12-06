@@ -7,56 +7,59 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="card">
-        <div class="card-header">
-          Edit Patient
-          </div>
-            <div class="card-body">
-                @if ($errors->any())
-                  <div class="alert alert-danger">
-                    <ul>
-                      @foreach ($errors->all() as $error)
-                          <li> {{ $error }}</li>
-                      @endforeach
-                    </ul>
-                  </div>
-                @endif
 
-                
-                <form method="POST" action="{{route('patient.update', $user->id)}}">
-                    <input type="hidden" name="_method" value="PUT">
-                  <input type="hidden" name="_token" value="{{csrf_token() }}">
-                  <div class="form-group">
-                          <label for="first_name">First Name</label>
-                          <input type="text" class="form-control" id="first_name" name="first_name" value="{{ old('first_name',$user->first_name) }}" />
-                      </div>
+          <div class="card-header">
+                            Edit visit
+                        </div>
+                        <div class="card-body">
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}<li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            <form method="POST" action="{{ route('visit.update', $visit->id) }}">
+                                <input type="hidden" name="_method" value="PUT">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <div class="form-group">
+                                    <label for="doctor">Doctor</label>
+                                    <br />
+                                    <select name="doctor_id">
+                                        @foreach ($doctors as $doctor)
+                                            <option 
+                                                value={{ $doctor->id }} 
+                                                {{ (old('doctor_id', $visit->doctor_id) == $doctor->id) 
+                                                    ? "selected" 
+                                                    : "" }}
+                                            >{{ $doctor->user->first_name }} {{ $doctor->user->last_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="patient">Patient</label>
+                                    <br />
+                                    <select name="patient_id">
+                                        @foreach ($patients as $patient)
+                                            <option 
+                                                value={{ $patient->id }} 
+                                                {{ (old('patient_id', $visit->patient_id) == $patient->id) 
+                                                    ? "selected" 
+                                                    : "" }}
+                                            >{{ $patient->user->first_name }} {{ $patient->user->last_name }}</option>
+                                        @endforeach
                       <div class="form-group">
-                          <label for="last_name">Last Name</label>
-                          <input type="text" class="form-control" id="last_name" name="last_name" value="{{ old('last_name',$user->last_name) }}" />
-                      </div>
+                          <label for="cost">Cost</label>
+                          <input type="text" class="form-control" id="cost" name="cost" value="{{ old('cost'), $visit->cost}}" />
                       <div class="form-group">
-                          <label for="address_1">Address 1</label>
-                          <input type="text" class="form-control" id="address_1" name="address_1" value="{{ old('address_1',$user->address_1) }}" />
-                      <div class="form-group">
-                          <label for="address_2">Address 2</label>
-                          <input type="text" class="form-control" id="address_2" name="address_2" value="{{ old('address_2',$user->address_2) }}" />
-                      </div>
-                      <div class="form-group">
-                          <label for="phone_number">Phone Number</label>
-                          <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ old('phone_number',$user->phone_number) }}" />
-                      </div>
-                      <div class="form-group">
-                          <label for="email">Email</label>
-                          <input type="text" class="form-control" id="email" name="email" value="{{ old('email',$user->email) }}" />
-                      </div>
-                      <div class="form-group">
-                          <label for="policy_number">Policy Number</label>
-                          <input type="text" class="form-control" id="policy_number" name="policy_number" value="{{ old('policy_number',$user->patient->expertise) }}" />                                                                
+                          <label for="duration">Duration</label>
+                          <input type="text" class="form-control" id="duration" name="duration" value="{{ old('duration'), $visit->duration }}" />
                       </div>
 
 
-
-
-                   <a href ="{{route ('patient.index') }}" class="btn btn-primary">Cancel</a>
+                   <a href ="{{route ('visit.index') }}" class="btn btn-primary">Cancel</a>
                    <button type="submit" class="btn btn-primary float-right">Submit</button>
 
 

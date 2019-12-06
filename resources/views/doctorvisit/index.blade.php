@@ -6,13 +6,14 @@
         <div class="col-md-12">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
+
+                    <div class="card-header">   
                     visits
-                    <a href="{{ route('doctorvisit.create') }}" class="btn btn-primary float-right">Add</a>
+                    <a href="{{ route('visit.create') }}" class="btn btn-primary float-right">Add</a>
 
                     </div>
                     <div class="card-body">
-                    @if (count($visit)===0)
+                    @if (count($visits)===0)
                     <p> there are no visits! </p>
                     @else
                     <table id="table-visits" class="table table-hover">
@@ -28,7 +29,7 @@
                     </thead>
 
                     <tbody>
-                        @foreach ($visit ?? '' as $visit)
+                        @foreach ($visits as $visit)
                             <tr data-id="{{ $visit->id }}">
                                 <td>{{$visit->cost}}</td>
                                 <td>{{$visit->duration}}</td>

@@ -54,7 +54,13 @@
 
                     </ul>
                     @elseif(Auth::user() && Auth::user()->hasRole('doctor'))
-                <a class="navbar-brand" href="{{ url('/visits/index') }}">
+                    <a class="navbar-brand" href="{{ url('/doctor/home') }}">
+                    Profile
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="{{ url('/doctors/visit') }}">
                     Visits
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -66,13 +72,24 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url('/doctor/home') }}">
-                    MedicalCenter
+                @elseif(Auth::user() && Auth::user()->hasRole('patient'))
+                <a class="navbar-brand" href="{{ url('/patient/profile') }}">
+                    Profile
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <a class="navbar-brand" href="{{ url('/patient/visit') }}">
+                    Visits
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+
                 @endif
+
+            
                 
 
 

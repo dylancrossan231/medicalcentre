@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Doctor;
-use App\Doctor;
-use App\User;
-use App\Role;
-use Auth;
+namespace App\Http\Controllers\Patient;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Patient;
+use App\Visit;
+use App\User;
+use App\Doctor;
+use Auth;
 
-class HomeController extends Controller
+class VisitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,16 +19,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-        $user = User::findOrFail(Auth::id());
-        $doctor = Doctor::findOrFail($user->doctor->id);
-        
-        
-    
-        return view('doctoruser.home')->with([
-            'user' => $user,
-            'doctor' => $doctor
-        ]);        
+        //
     }
 
     /**
@@ -56,12 +49,15 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-       public function show($id)
-       {
-//
-       }
-    
+    public function show()
+    {
+        $user = User::findOrFail(Auth::id());
+        $visits = Visit::where('patient_id', $user->patient->id)->get();
+        return view('patientvisit.show')->with([
+            
+            'visits' => $visits
+                    ]);
+    }
 
     /**
      * Show the form for editing the specified resource.
