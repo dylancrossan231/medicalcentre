@@ -31,7 +31,7 @@
                                                 {{ (old('doctor_id') == $doctor->id) 
                                                     ? "selected" 
                                                     : "" }}
-                                            >{{ $doctor->user->first_name }} {{ $doctor->user->last_name }}</option>
+                                                 >{{ $doctor->user->first_name }} {{ $doctor->user->last_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

@@ -12,6 +12,11 @@ use Auth;
 
 class VisitController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+       $this->middleware('role:patient');
+    } 
     /**
      * Display a listing of the resource.
      *
@@ -54,9 +59,8 @@ class VisitController extends Controller
         $user = User::findOrFail(Auth::id());
         $visits = Visit::where('patient_id', $user->patient->id)->get();
         return view('patientvisit.show')->with([
-            
             'visits' => $visits
-                    ]);
+             ]);
     }
 
     /**

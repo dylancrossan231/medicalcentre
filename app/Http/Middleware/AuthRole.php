@@ -21,8 +21,8 @@ class AuthRole
     public function handle($request, Closure $next ,String $role)
     {
       if (!$request->user()  || !$request->user()->hasRole($role)) {
-        return response ('Unauthorized',401);
-      }
+      return redirect()->route('home');
+    }
         return $next($request);
     }
 }

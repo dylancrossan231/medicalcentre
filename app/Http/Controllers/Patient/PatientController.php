@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Hash;
 
 class PatientController extends Controller
 {
-    
+    public function __construct()
+    {
+        $this->middleware('auth');
+       $this->middleware('role:patient');
+    } 
     /**
      * Display a listing of the resource.
      *
