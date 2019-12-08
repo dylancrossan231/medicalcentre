@@ -10,7 +10,6 @@
                     <div class="card-header">   
                     visits
                     <a href="{{ route('visit.create') }}" class="btn btn-primary float-right">Add</a>
-
                     </div>
                     <div class="card-body">
                     @if (count($visits)===0)

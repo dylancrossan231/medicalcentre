@@ -44,40 +44,9 @@ Route::delete('/doctors/visit/{id}', 'Doctor\VisitController@destroy')->name('do
 Route::get('/doctors/visit/{id}/edit', 'Doctor\VisitController@edit')->name('doctorvisit.edit');
 Route::put('/doctors/visit/{id}', 'Doctor\VisitController@update')->name('doctorvisit.update');
 
-
+//patient routes
 Route::get('/patient/profile', 'Patient\PatientController@index')->name('patientuser.profile');
 Route::get('/patient/visit', 'Patient\VisitController@show')->name('patientvisit.show');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //admin routes

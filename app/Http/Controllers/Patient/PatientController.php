@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 
 class PatientController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *

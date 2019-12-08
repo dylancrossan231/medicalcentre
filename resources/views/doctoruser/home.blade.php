@@ -44,8 +44,7 @@
                             <td>Date Started</td>
                             <td>{{$doctor->date_started}}
                         </tr>
-                        
-
+                    
                      </tbody>
                     </table>                      
                 </div>

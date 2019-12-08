@@ -9,11 +9,13 @@ use App\Role;
 use App\User;
 use App\Visit;
 use App\Doctor;
+use Auth;
 use App\Patient;
 use Illuminate\Support\Facades\Hash;
 
 class PatientController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -25,6 +27,7 @@ class PatientController extends Controller
     
         return view('doctorpatient.index')->with([
             'patients' => $patients
+            
         ]);
     
     }
@@ -88,9 +91,11 @@ class PatientController extends Controller
     public function show($id)
     {
         $patient = Patient::findOrFail($id);
+        $user = User::findOrFail(Auth::id());
 
         return view ('doctorpatient.show')->with([
-            'patient' => $patient
+            'patient' => $patient,
+            'user' => $user
         ]);
     }
 

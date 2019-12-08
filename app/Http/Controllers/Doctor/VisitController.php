@@ -12,6 +12,7 @@ use Auth;
 use App\Patient;
 class VisitController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -19,15 +20,17 @@ class VisitController extends Controller
      */
     public function index()
     {
-         $patients = Patient::all();
-         $doctors = Doctor::all();
-         $visits = Visit::all();
-         return view('doctorvisit.index')->with([
-            'visits' => $visits,
-            'patients' => $patients,
-            'doctors' => $doctors
-            
-                                         ]);
+            $patients = Patient::all();
+            $doctors = Doctor::all();
+            $user = User::findOrFail(Auth::id());
+            $visits = Visit::where('doctor_id', $user->doctor->id)->get();
+            return view('doctorvisit.index')->with([
+                'visits' => $visits,
+                'patients' => $patients,
+                'doctors' => $doctors,
+                'user' => $user
+                 ]);
+                                        
     }
 
     /**

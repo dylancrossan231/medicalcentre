@@ -8,7 +8,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\User;
 class HomeController extends Controller
 {
     /**
@@ -34,6 +34,9 @@ class HomeController extends Controller
 
         if ($user->hasRole('admin')) {
           $home = 'admin.home';
+          return view($home)->with([
+            'user' => $user
+          ]);
 
         }
         else if($user->hasRole('doctor')){
