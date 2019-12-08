@@ -144,7 +144,7 @@ class VisitController extends Controller
         $visit->patient_id = $request->input('patient_id');
         $visit->save();
 
-        return redirect()->route('doctorvisit.index');    
+        return redirect()->route('visit.index');    
     }
 
     /**

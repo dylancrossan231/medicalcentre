@@ -47,8 +47,8 @@
 
                      </tbody>
                     </table>
-                                    <a href="{{route('doctorpatient.index')}}" class="btn btn-primary"> Back</a>
-                                    <a href="{{route('doctorvisit.index')}}" class="btn btn-primary"> Back to Visits</a>
+                                    <a href="{{route('patient.index')}}" class="btn btn-primary"> Back</a>
+                                    <a href="{{route('visit.index')}}" class="btn btn-primary"> Back to Visits</a>
 
 
                       

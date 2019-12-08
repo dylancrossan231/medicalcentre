@@ -22,7 +22,7 @@
                 @endif
 
                 
-                <form method="POST" action="{{route('doctorpatient.update', $user->id)}}">
+                <form method="POST" action="{{route('patient.update', $user->id)}}">
                     <input type="hidden" name="_method" value="PUT">
                   <input type="hidden" name="_token" value="{{csrf_token() }}">
                   <div class="form-group">
@@ -50,13 +50,13 @@
                       </div>
                       <div class="form-group">
                           <label for="policy_number">Policy Number</label>
-                          <input type="text" class="form-control" id="policy_number" name="policy_number" value="{{ old('policy_number',$user->patient->expertise) }}" />                                                                
+                          <input type="text" class="form-control" id="policy_number" name="policy_number" value="{{ old('policy_number',$user->patient->policy_number) }}" />                                                                
                       </div>
 
 
 
 
-                   <a href ="{{route ('doctorpatient.index') }}" class="btn btn-primary">Cancel</a>
+                   <a href ="{{route ('patient.index') }}" class="btn btn-primary">Cancel</a>
                    <button type="submit" class="btn btn-primary float-right">Submit</button>
 
 

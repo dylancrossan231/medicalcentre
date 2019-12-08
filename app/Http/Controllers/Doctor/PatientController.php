@@ -62,7 +62,7 @@ class PatientController extends Controller
             'phone_number' => 'required|integer',
             'email' => 'required|max:191',
             'password' => 'required|min:8',
-            'policy_number' => 'required|integer'
+            'policy_number' => 'required|min:10'
 
         ]);
 
@@ -136,7 +136,7 @@ class PatientController extends Controller
             'email' => 'required|email|unique:users,email,'.$id.'|max:191',
             'password' => 'min:8',
             'phone_number' => 'required|integer',
-            'policy_number' => 'required|integer'
+            'policy_number' => 'required|min:10'
 
         ]);
         $user->first_name = $request->input('first_name');

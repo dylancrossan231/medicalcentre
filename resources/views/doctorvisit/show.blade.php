@@ -24,7 +24,7 @@
                             <tr>
                             <td>Doctor</td>
                             <td>
-                            <a href="{{route('doctor.show', $visit->doctor->id)}}"> {{$visit->doctor->user->first_name}} {{$visit->doctor->user->last_name}}</a>
+                            <a href="{{route('doctoruser.home', $visit->doctor->id)}}"> {{$visit->doctor->user->first_name}} {{$visit->doctor->user->last_name}}</a>
                             </td>                            
                             </tr>
                             <tr>

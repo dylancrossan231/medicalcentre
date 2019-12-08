@@ -17,7 +17,7 @@ class PatientTableSeeder extends Seeder
 
         foreach ($role_patient->users as $user) {
           $patient = new Patient();
-          $patient->policy_number = '10990909';
+          $patient->policy_number = '1234567891';
           $patient->user_id = $user->id;
           $patient->save();
         }

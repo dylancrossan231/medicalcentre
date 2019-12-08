@@ -9,6 +9,7 @@ use App\Role;
 use App\User;
 use App\Visit;
 use App\Doctor;
+use Auth;
 use App\Patient;
 use Illuminate\Support\Facades\Hash;
 
@@ -19,6 +20,7 @@ class PatientController extends Controller
         $this->middleware('auth');
        $this->middleware('role:admin');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -30,6 +32,7 @@ class PatientController extends Controller
     
         return view('patient.index')->with([
             'patients' => $patients
+            
         ]);
     
     }
@@ -57,10 +60,10 @@ class PatientController extends Controller
             'last_name' => 'required|max:191',
             'address_1' => 'required|max:191',
             'address_2' => 'required|max:191',
-            'phone_number' => 'required|integer',
+            'phone_number' => 'required|min:10',
             'email' => 'required|max:191',
             'password' => 'required|min:8',
-            'policy_number' => 'required|integer'
+            'policy_number' => 'required|min:10'
 
         ]);
 
@@ -80,7 +83,8 @@ class PatientController extends Controller
         $patient->policy_number = $request->input('policy_number');
         $patient->user_id = $user->id;
         $patient->save();
-        return redirect()->route('patient.index', $user->id);
+
+        return redirect()->route('patient.index', $user->id );
 
     }
 
@@ -93,9 +97,11 @@ class PatientController extends Controller
     public function show($id)
     {
         $patient = Patient::findOrFail($id);
+        $user = User::findOrFail(Auth::id());
 
         return view ('patient.show')->with([
-            'patient' => $patient
+            'patient' => $patient,
+            'user' => $user
         ]);
     }
 
@@ -131,8 +137,8 @@ class PatientController extends Controller
             'address_2' => 'required|max:191',
             'email' => 'required|email|unique:users,email,'.$id.'|max:191',
             'password' => 'min:8',
-            'phone_number' => 'required|integer',
-            'policy_number' => 'required|integer'
+            'phone_number' => 'required|min:10',
+            'policy_number' => 'required|min:10'
 
         ]);
         $user->first_name = $request->input('first_name');

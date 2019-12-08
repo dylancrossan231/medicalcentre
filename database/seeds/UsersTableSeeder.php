@@ -28,7 +28,7 @@ class UsersTableSeeder extends Seeder
       $admin->last_name = 'Admin';
       $admin->address_1 = '3 knocksinna Crescent';
       $admin->address_2 = 'Foxrock Dublin 18';
-      $admin->phone_number = '0892199035';
+      $admin->phone_number = '1234567891';
       $admin->email = 'dylancrossan1@hotmail.com';
       $admin->password = bcrypt('secret123');
       $admin->save();
@@ -36,22 +36,10 @@ class UsersTableSeeder extends Seeder
 
       $user = new User();
       $user->first_name = 'Dylan';
-      $user->last_name = 'User';
-      $user->address_1 = '3 knocksinna Crescent';
-      $user->address_2 = 'Foxrock Dublin 18';
-      $user->phone_number = '0892199035';
-      $user->email = 'dylancrossan12@hotmail.com';
-      $user->password =bcrypt('secret123');
-      $user->save();
-      $user->roles()->attach($role_user);
-
-
-      $user = new User();
-      $user->first_name = 'Dylan';
       $user->last_name = 'Doctor';
       $user->address_1 = '3 knocksinna Crescent';
       $user->address_2 = 'Foxrock Dublin 18';
-      $user->phone_number = '0892199035';
+      $user->phone_number = '1234567891';
       $user->email = 'dylancrossan123@hotmail.com';
       $user->password =bcrypt('secret123');
       $user->save();
@@ -62,7 +50,7 @@ class UsersTableSeeder extends Seeder
       $user->last_name = 'User';
       $user->address_1 = '3 knocksinna Crescent';
       $user->address_2 = 'Foxrock Dublin 18';
-      $user->phone_number = '0892199035';
+      $user->phone_number = '1234567891';
       $user->email = 'dylancrossan1234@hotmail.com';
       $user->password =bcrypt('secret123');
       $user->save();

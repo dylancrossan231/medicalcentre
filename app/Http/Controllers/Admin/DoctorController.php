@@ -58,7 +58,7 @@ class DoctorController extends Controller
             'last_name' => 'required|max:191',
             'address_1' => 'required|max:191',
             'address_2' => 'required|max:191',
-            'phone_number' => 'required|integer',
+            'phone_number' => 'required|min:10',
             'email' => 'required|max:191',
             'password' => 'required|min:8',
             'date_started' => 'required|max:191',
@@ -135,7 +135,7 @@ class DoctorController extends Controller
             'address_2' => 'required|max:191',
             'email' => 'required|email|unique:users,email,'.$id.'|max:191',
             'password' => 'min:8',
-            'phone_number' => 'required|integer',
+            'phone_number' => 'required|min:10',
             'expertise' => 'required|max:255|string',
             'date_started' => 'required|max:191'
         ]);

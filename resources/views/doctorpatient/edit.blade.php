@@ -50,7 +50,7 @@
                       </div>
                       <div class="form-group">
                           <label for="policy_number">Policy Number</label>
-                          <input type="text" class="form-control" id="policy_number" name="policy_number" value="{{ old('policy_number',$user->patient->expertise) }}" />                                                                
+                          <input type="text" class="form-control" id="policy_number" name="policy_number" value="{{ old('policy_number',$user->patient->policy_number) }}" />                                                                
                       </div>
 
 

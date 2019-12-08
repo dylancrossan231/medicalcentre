@@ -26,11 +26,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin/home', 'Admin\HomeController@index')->name('admin.home');
 Route::get('/doctor/home', 'Doctor\HomeController@index')->name('doctoruser.home');
 Route::get('/patient/home', 'Patient\HomeController@index')->name('patientuser.home');
+Route::get('/doctors/patient/create', 'Doctor\PatientController@create')->name('doctorpatient.create');
 
 //doctor routes
 Route::get('/doctors/patient', 'Doctor\PatientController@index')->name('doctorpatient.index');
 Route::get('/doctors/patient/{id}', 'Doctor\PatientController@show')->name('doctorpatient.show');
-Route::get('/doctors/patient/create', 'Doctor\PatientController@create')->name('doctorpatient.create');
+Route::get('/doctor/patient/create', 'Doctor\PatientController@create')->name('doctorpatient.create');
 Route::post('/doctors/patient/store', 'Doctor\PatientController@store')->name('doctorpatient.store');
 Route::delete('/doctors/patient/{id}', 'Doctor\PatientController@destroy')->name('doctorpatient.destroy');
 Route::get('/doctor/patient/{id}/edit', 'Doctor\PatientController@edit')->name('doctorpatient.edit');

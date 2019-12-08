@@ -16,7 +16,7 @@ class AddPatientIdToVisitTable extends Migration
         Schema::table('visit', function (Blueprint $table) {
             $table->dropColumn('patientid');
             $table->bigInteger('patient_id')->unsigned();
-            $table->foreign('patient_id')->references('id')->on('patients');
+            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');;
         });
     }
     

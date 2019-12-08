@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+
 <div class="container">
   <div class="row">
       <div class="col-md-8 col-md-offset-2">
@@ -19,7 +22,7 @@
                           </ul>
                       </div>
                   @endif
-                  <form method="POST" action="{{ route('doctorpatient.store') }}">
+                  <form method="POST" action="{{ route('patient.store') }}">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
                       <div class="form-group">
                           <label for="first_name">First Name</label>
@@ -53,7 +56,8 @@
                           <input type="text" class="form-control" id="policy_number" name="policy_number" value="{{ old('policy_number') }}" />
 
                       <div class="float-right">
-                        <a href="{{ route('doctorpatient.index') }}" class="btn btn-default">Cancel</a>
+                        <a href="{{ route('patient.index') }}" class="btn btn-default">Cancel</a>
+
                         <button type="submit" class="btn btn-primary pull-right">Submit</button>
                       </div>
                   </form>

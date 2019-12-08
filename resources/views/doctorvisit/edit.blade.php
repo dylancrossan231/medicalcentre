@@ -52,10 +52,10 @@
                                         @endforeach
                       <div class="form-group">
                           <label for="cost">Cost</label>
-                          <input type="text" class="form-control" id="cost" name="cost" value="{{ old('cost'), $visit->cost}}" />
+                          <input type="text" class="form-control" id="cost" name="cost" value="{{ old('cost', $visit->cost)}}" />
                       <div class="form-group">
                           <label for="duration">Duration</label>
-                          <input type="text" class="form-control" id="duration" name="duration" value="{{ old('duration'), $visit->duration }}" />
+                          <input type="text" class="form-control" id="duration" name="duration" value="{{ old('duration', $visit->duration) }}" />
                       </div>
 
 
